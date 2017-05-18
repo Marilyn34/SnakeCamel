@@ -1,11 +1,22 @@
 package snakecamel;
 
 public class SnakeCamelUtil {
+	
+	public static void main(String[] args) {
+		System.out.println("itoHaruka".equals(snakeToCamelcase("ito_haruka")) ? true : false);
+		System.out.println("ito_haruka".equals(camelToSnakecase("itoHaruka")) ? true : false);
+		
+		System.out.println(snakeToCamelcase("itoHaruka"));
+		System.out.println(camelToSnakecase("ito_haruka"));
+		System.out.println(capitalize("Haruka"));
+		System.out.println(uncapitalize("haruka"));
+	}
 
 	public static String snakeToCamelcase(String snake_case) {
 		String[] words = snake_case.split("_");
 		StringBuilder sb = new StringBuilder();
-		for (int i = 0; i < words.length - 1; i++) {
+		sb.append(words[0]);
+		for (int i = 1; i < words.length; i++) {
 			sb.append(capitalize(words[i]));
 		}
 		return new String(sb);
@@ -25,7 +36,7 @@ public class SnakeCamelUtil {
 				j = i;
 			}
 		}
-		sb.append(camelcase.substring(j));
+		sb.append(camelcase.substring(j+1));
 		return new String(sb);
 	}
 	
@@ -42,5 +53,6 @@ public class SnakeCamelUtil {
 		String rest = s.substring(1);
 		return lowerFirst + rest;
 	}
+	
 	
 }
